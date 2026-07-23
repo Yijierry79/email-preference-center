@@ -239,29 +239,54 @@
       width: 100%;
       height: 36px;
       min-height: 36px;
-      padding: 6px 12px;
-      border: 1px solid #dfe3e8;
-      border-radius: 10px;
-      background: #ffffff;
-      box-shadow: 0 2px 6px rgba(2, 7, 19, 0.14);
-      color: #4b5563;
-      font: 500 1rem/1.3 "HarmonyOS Sans", Arial, Helvetica, sans-serif;
+      padding: 6px 2px 6px calc(2px + 1ch);
+      border: 0;
+      border-radius: 0;
+      background-color: transparent;
+      background-image: linear-gradient(var(--cta-green), var(--cta-green));
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: 100% 1.5px;
+      box-shadow: none;
+      color: var(--text-primary);
+      color-scheme: dark;
+      caret-color: var(--cta-green);
+      font: 500 20px/1.3 "HarmonyOS Sans", Arial, Helvetica, sans-serif;
       letter-spacing: 0;
-      transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), color 160ms var(--ease-out);
+      transition: background-size 160ms var(--ease-out), color 160ms var(--ease-out);
     }
 
     .preference-page .email-input::placeholder {
-      color: #596274;
+      color: var(--text-secondary);
       opacity: 1;
     }
 
-    .preference-page .email-input[aria-invalid="true"] {
-      border-color: var(--danger);
-      box-shadow: 0 0 0 3px rgba(255, 123, 130, 0.16);
+    .preference-page .email-input:-webkit-autofill,
+    .preference-page .email-input:-webkit-autofill:hover,
+    .preference-page .email-input:-webkit-autofill:focus,
+    .preference-page .email-input:autofill {
+      -webkit-text-fill-color: var(--text-primary);
+      -webkit-box-shadow: 0 0 0 1000px var(--surface-base) inset, inset 0 -1.5px 0 var(--cta-green);
+      box-shadow: 0 0 0 1000px var(--surface-base) inset, inset 0 -1.5px 0 var(--cta-green);
+      caret-color: var(--cta-green);
+    }
+
+    .preference-page .email-input:-webkit-autofill:hover,
+    .preference-page .email-input:-webkit-autofill:focus {
+      -webkit-text-fill-color: var(--cta-green);
+      -webkit-box-shadow: 0 0 0 1000px var(--surface-base) inset, inset 0 -2.5px 0 var(--cta-green);
+      box-shadow: 0 0 0 1000px var(--surface-base) inset, inset 0 -2.5px 0 var(--cta-green);
+    }
+
+    .preference-page .email-input[aria-invalid="true"],
+    .preference-page .email-input[aria-invalid="true"]:focus-visible {
+      background-image: linear-gradient(var(--danger), var(--danger));
+      background-size: 100% 2px;
+      box-shadow: none;
     }
 
     .preference-page .email-input[aria-invalid="true"]::placeholder {
-      color: #9b2531;
+      color: var(--danger);
     }
 
     .preference-page .select-trigger {
@@ -274,33 +299,41 @@
       min-width: 100%;
       height: 36px;
       min-height: 36px;
-      padding: 6px 12px;
+      padding: 6px 2px;
       overflow: hidden;
       cursor: pointer;
-      border: 1px solid #dfe3e8;
-      border-radius: 10px;
-      background: #ffffff;
-      box-shadow: 0 2px 6px rgba(2, 7, 19, 0.14);
-      color: #4b5563;
+      border: 0;
+      border-radius: 0;
+      background-color: transparent;
+      background-image: linear-gradient(var(--cta-green), var(--cta-green));
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: 100% 1.5px;
+      box-shadow: none;
+      color: var(--text-primary);
       font-family: "HarmonyOS Sans", Arial, Helvetica, sans-serif;
-      font-size: 1rem;
+      font-size: 20px;
       font-weight: 500;
       letter-spacing: 0;
       line-height: 1.3;
       text-align: left;
       white-space: nowrap;
-      transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), color 160ms var(--ease-out);
-    }
-
-    .preference-page .select-trigger:hover,
-    .preference-page .select-trigger[aria-expanded="true"] {
-      border-color: rgba(171, 205, 1, 0.88);
-      box-shadow: 0 0 0 3px rgba(171, 205, 1, 0.15);
-      color: #263000;
+      transition: background-size 160ms var(--ease-out), color 160ms var(--ease-out);
     }
 
     .preference-page .select-trigger.is-placeholder {
-      color: #596274;
+      color: var(--text-secondary);
+    }
+
+    .preference-page .select-trigger:hover,
+    .preference-page .select-trigger:focus-visible,
+    .preference-page .select-trigger[aria-expanded="true"],
+    .preference-page .select-trigger.is-placeholder:hover,
+    .preference-page .select-trigger.is-placeholder:focus-visible,
+    .preference-page .select-trigger.is-placeholder[aria-expanded="true"] {
+      background-size: 100% 2.5px;
+      box-shadow: none;
+      color: var(--cta-green);
     }
 
     .select-value {
@@ -317,7 +350,8 @@
       width: 20px;
       height: 20px;
       place-items: center;
-      color: #9aa3b2;
+      color: var(--text-secondary);
+      transition: color 160ms var(--ease-out);
     }
 
     .select-icon svg {
@@ -326,12 +360,33 @@
       height: 18px;
     }
 
-    .preference-page .email-input:hover {
-      border-color: rgba(171, 205, 1, 0.88);
+    .preference-page .email-input:hover,
+    .preference-page .email-input:focus,
+    .preference-page .email-input:focus-visible,
+    .preference-page .select-trigger:focus-visible {
+      background-size: 100% 2.5px;
+      box-shadow: none;
+      outline: none;
     }
 
-    .preference-page .email-input:focus-visible,
-    .preference-page .select-trigger:focus-visible,
+    .preference-page .email-input:hover,
+    .preference-page .email-input:focus,
+    .preference-page .email-input:focus-visible {
+      color: var(--cta-green);
+    }
+
+    .preference-page .email-input:hover::placeholder,
+    .preference-page .email-input:focus::placeholder,
+    .preference-page .email-input:focus-visible::placeholder {
+      color: var(--cta-green);
+    }
+
+    .preference-page .select-trigger:hover .select-icon,
+    .preference-page .select-trigger:focus-visible .select-icon,
+    .preference-page .select-trigger[aria-expanded="true"] .select-icon {
+      color: var(--cta-green);
+    }
+
     .preference-page .save-button:focus-visible,
     .preference-page .topic-option input:focus-visible + .topic-option__copy {
       outline: 3px solid var(--lime-bright);
@@ -723,17 +778,29 @@
         height: 40px;
         min-height: 40px;
         padding: 6px 0;
-        font-size: 1rem;
+        font-size: 20px;
         letter-spacing: -0.01em;
         line-height: 1.35;
       }
 
       .preference-page .select-trigger {
-        padding: 8px 12px;
+        padding: 8px 2px;
       }
 
       .preference-page .email-input {
-        padding: 8px 12px;
+        padding: 8px 2px 8px calc(2px + 1ch);
+      }
+
+      #industry-trigger.has-single-selection {
+        height: auto;
+        min-height: 40px;
+      }
+
+      #industry-trigger.has-single-selection .select-value {
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
+        line-height: 1.2;
       }
 
       .field-error {
@@ -1031,7 +1098,7 @@
               <span class="inline-control inline-control--industry">
                 <label class="visually-hidden" for="industry-trigger">Industry</label>
                 <input id="industry" name="industry" type="hidden" value="">
-                <button id="industry-trigger" class="select-trigger is-placeholder" type="button" popovertarget="industry-panel" aria-label="Choose industry" aria-expanded="false" aria-controls="industry-panel">
+                <button id="industry-trigger" class="select-trigger is-placeholder" type="button" popovertarget="industry-panel" aria-label="Choose one or more industries" aria-expanded="false" aria-controls="industry-panel">
                   <span class="select-value">Choose industry</span>
                   <span class="select-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 9l4-4 4 4m0 6-4 4-4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span>
                 </button>
@@ -1040,7 +1107,7 @@
               <span class="inline-control inline-control--region">
                 <label class="visually-hidden" for="region-trigger">Region</label>
                 <input id="region" name="region" type="hidden" value="">
-                <button id="region-trigger" class="select-trigger is-placeholder" type="button" popovertarget="region-panel" aria-label="Choose region" aria-expanded="false" aria-controls="region-panel">
+                <button id="region-trigger" class="select-trigger is-placeholder" type="button" popovertarget="region-panel" aria-label="Choose one or more regions" aria-expanded="false" aria-controls="region-panel">
                   <span class="select-value">Choose region</span>
                   <span class="select-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 9l4-4 4 4m0 6-4 4-4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span>
                 </button>
@@ -1055,8 +1122,8 @@
               </span><span class="desktop-punctuation">.</span></span>
           </p>
 
-          <div id="industry-panel" class="select-panel" popover role="listbox" aria-label="Choose industry"></div>
-          <div id="region-panel" class="select-panel" popover role="listbox" aria-label="Choose region"></div>
+          <div id="industry-panel" class="select-panel" popover role="listbox" aria-multiselectable="true" aria-label="Choose one or more industries"></div>
+          <div id="region-panel" class="select-panel" popover role="listbox" aria-multiselectable="true" aria-label="Choose one or more regions"></div>
 
           <div id="topics-panel" class="topics-panel" popover aria-label="Choose topics">
             <label class="topic-option" for="topic-all">
@@ -1085,7 +1152,7 @@
             </label>
             <label class="topic-option" for="topic-industry-insights">
               <input id="topic-industry-insights" name="topics" type="checkbox" value="industry-insights">
-              <span class="topic-option__copy"><strong class="topic-option__title">Industry Insights &amp; Educational Articles</strong><span class="topic-option__description">Insights on industry trends, regulations, compliance, cybersecurity, OEM integration, and commercial vehicle technology.</span></span>
+              <span class="topic-option__copy"><strong class="topic-option__title">Industry Insights &amp; Educational Blogs</strong><span class="topic-option__description">Insights on industry trends, regulations, compliance, cybersecurity, OEM integration, and commercial vehicle technology.</span></span>
             </label>
           </div>
 
@@ -1227,12 +1294,12 @@
       ["oem-vehicle-manufacturer", "OEM / Vehicle Manufacturer"]
     ];
     const regionOptions = [
+      ["all-regions", "All Regions"],
       ["asia-pacific", "Asia Pacific"],
       ["europe", "Europe"],
       ["middle-east-africa", "Middle East & Africa"],
       ["north-america", "North America"],
-      ["latin-america", "Latin America"],
-      ["global-multiple", "Global / Multiple Regions"]
+      ["latin-america", "Latin America"]
     ];
 
     const topicsTrigger = document.getElementById("topics-trigger");
@@ -1274,7 +1341,7 @@
     };
     recolorSaveArrow(saveArrowImage, [172, 206, 34]);
     recolorSaveArrow(saveArrowHoverImage, [8, 17, 31]);
-    const singleSelectControls = [];
+    const selectControls = [];
     let saveInFlight = false;
     let suppressTopicsFocusRestore = false;
     const preferenceToken = new URLSearchParams(window.location.search).get("token") || "";
@@ -1308,12 +1375,62 @@
       panel.style.top = `${Math.round(top)}px`;
     }
 
-    function createSingleSelect({ inputId, triggerId, panelId, prompt, options }) {
+    function createMultiSelect({ inputId, triggerId, panelId, prompt, options, allValue, summarize }) {
       const input = document.getElementById(inputId);
       const trigger = document.getElementById(triggerId);
       const panel = document.getElementById(panelId);
       const valueNode = trigger.querySelector(".select-value");
       const hasNativePopover = typeof panel.showPopover === "function" && typeof panel.hidePopover === "function";
+      const labelByValue = new Map(options);
+      const specificValues = options.map(([value]) => value).filter((value) => value !== allValue);
+      let selectedValues = new Set();
+
+      const getValues = () => specificValues.filter((value) => selectedValues.has(value));
+      const isAllSelected = () => specificValues.length > 0 && specificValues.every((value) => selectedValues.has(value));
+      const updateSelectionUI = () => {
+        const values = getValues();
+        const allSelected = isAllSelected();
+        const labels = values.map((value) => labelByValue.get(value));
+        const summary = summarize({ values, labels, allSelected });
+
+        panel.querySelectorAll(".select-option").forEach((option) => {
+          const value = option.dataset.value;
+          const selected = value === allValue ? allSelected : selectedValues.has(value);
+          option.setAttribute("aria-selected", String(selected));
+        });
+
+        valueNode.textContent = summary || prompt;
+        valueNode.title = summary || "";
+        trigger.classList.toggle("is-placeholder", values.length === 0);
+        trigger.classList.toggle("has-single-selection", values.length === 1);
+        trigger.setAttribute("aria-label", values.length ? `${summary}. ${panel.getAttribute("aria-label")}` : panel.getAttribute("aria-label"));
+        input.value = values.join(",");
+      };
+
+      const setValues = (values, { emit = false } = {}) => {
+        const normalizedValues = Array.isArray(values)
+          ? values
+          : typeof values === "string"
+            ? values.split(",").map((value) => value.trim()).filter(Boolean)
+            : [];
+        selectedValues = normalizedValues.includes(allValue)
+          ? new Set(specificValues)
+          : new Set(normalizedValues.filter((value) => specificValues.includes(value)));
+        updateSelectionUI();
+        if (emit) input.dispatchEvent(new Event("change", { bubbles: true }));
+      };
+
+      const toggleValue = (value) => {
+        if (value === allValue) {
+          selectedValues = isAllSelected() ? new Set() : new Set(specificValues);
+        } else if (selectedValues.has(value)) {
+          selectedValues.delete(value);
+        } else {
+          selectedValues.add(value);
+        }
+        updateSelectionUI();
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      };
 
       options.forEach(([value, label]) => {
         const option = document.createElement("button");
@@ -1324,14 +1441,8 @@
         option.setAttribute("aria-selected", "false");
         option.innerHTML = `<span>${label}</span><span class="select-option__check" aria-hidden="true">✓</span>`;
         option.addEventListener("click", () => {
-          input.value = value;
-          valueNode.textContent = label;
-          trigger.classList.remove("is-placeholder");
-          panel.querySelectorAll(".select-option").forEach((item) => {
-            item.setAttribute("aria-selected", String(item === option));
-          });
-          input.dispatchEvent(new Event("change", { bubbles: true }));
-          close(true);
+          toggleValue(value);
+          option.focus();
         });
         panel.append(option);
       });
@@ -1344,7 +1455,7 @@
       };
       const position = () => positionFloatingPanel(trigger, panel, false);
       const open = () => {
-        singleSelectControls.forEach((control) => {
+        selectControls.forEach((control) => {
           if (control.panel !== panel) control.close(false);
         });
         if (hasNativePopover) {
@@ -1403,13 +1514,38 @@
         items[nextIndex]?.focus();
       });
 
-      const control = { input, trigger, panel, isOpen, open, close, position };
-      singleSelectControls.push(control);
+      const control = { input, trigger, panel, isOpen, open, close, position, getValues, setValues };
+      selectControls.push(control);
+      updateSelectionUI();
       return control;
     }
 
-    createSingleSelect({ inputId: "industry", triggerId: "industry-trigger", panelId: "industry-panel", prompt: "Choose industry", options: industryOptions });
-    createSingleSelect({ inputId: "region", triggerId: "region-trigger", panelId: "region-panel", prompt: "Choose region", options: regionOptions });
+    const industryControl = createMultiSelect({
+      inputId: "industry",
+      triggerId: "industry-trigger",
+      panelId: "industry-panel",
+      prompt: "Choose industry",
+      options: industryOptions,
+      allValue: "all-industries",
+      summarize: ({ values, labels, allSelected }) => {
+        if (allSelected) return "All Industries";
+        if (values.length === 0) return "";
+        if (values.length === 1) return labels[0];
+        return `${values.length} industries`;
+      }
+    });
+    const regionControl = createMultiSelect({
+      inputId: "region",
+      triggerId: "region-trigger",
+      panelId: "region-panel",
+      prompt: "Choose region",
+      options: regionOptions,
+      allValue: "all-regions",
+      summarize: ({ labels, allSelected }) => {
+        if (allSelected) return "All Regions";
+        return labels.join(" / ");
+      }
+    });
 
     async function loadPreferenceContext(token) {
       /* Replace with a same-origin request. The server resolves the opaque token and returns only token-authorized data. Direct visitors must not receive stored preferences for an entered email. */
@@ -1424,7 +1560,10 @@
 
     async function initializePreferenceContext() {
       const context = await loadPreferenceContext(preferenceToken);
-      if (context && context.email) document.getElementById("email").value = context.email;
+      if (!context) return;
+      if (context.email) document.getElementById("email").value = context.email;
+      industryControl.setValues(context.industry || context.industries || []);
+      regionControl.setValues(context.region || context.regions || []);
     }
 
     function setSaving(isSaving) {
@@ -1436,20 +1575,28 @@
       else if (document.getElementById("success-view").hidden && document.getElementById("error-view").hidden) statusAnnouncer.textContent = "";
     }
 
+    function scrollResultToTop() {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+
     function showResult(viewId) {
       const success = document.getElementById("success-view");
       const error = document.getElementById("error-view");
       const target = document.getElementById(viewId);
       const isSuccess = viewId === "success-view";
       suppressTopicsFocusRestore = supportsPopover && isTopicsPanelOpen();
-      singleSelectControls.forEach((control) => control.close(false));
+      selectControls.forEach((control) => control.close(false));
       closeTopicsPanel();
       preferenceForm.hidden = true;
       preferenceFormView.hidden = true;
       success.hidden = !isSuccess;
       error.hidden = isSuccess;
       statusAnnouncer.textContent = isSuccess ? "Your preferences are saved." : "We couldn’t save your preferences.";
-      target.querySelector("h2").focus();
+      scrollResultToTop();
+      target.querySelector("h2").focus({ preventScroll: true });
+      window.requestAnimationFrame(scrollResultToTop);
     }
 
     function getTopicCheckboxes() {
@@ -1469,7 +1616,7 @@
     }
 
     function openTopicsPanel() {
-      singleSelectControls.forEach((control) => control.close(false));
+      selectControls.forEach((control) => control.close(false));
       if (supportsPopover) {
         if (!isTopicsPanelOpen()) topicsPanel.showPopover();
       } else {
@@ -1550,8 +1697,8 @@
       return {
         token: preferenceToken,
         email: document.getElementById("email").value.trim(),
-        industry: document.getElementById("industry").value,
-        region: document.getElementById("region").value,
+        industry: industryControl.getValues(),
+        region: regionControl.getValues(),
         topics: getSpecificTopicCheckboxes().filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value)
       };
     }
@@ -1583,7 +1730,7 @@
     }
 
     document.addEventListener("pointerdown", (event) => {
-      singleSelectControls.forEach((control) => {
+      selectControls.forEach((control) => {
         if (control.isOpen() && !control.panel.contains(event.target) && !control.trigger.contains(event.target)) {
           control.close(false);
         }
@@ -1591,7 +1738,7 @@
     });
 
     const repositionOpenPanels = () => {
-      singleSelectControls.forEach((control) => {
+      selectControls.forEach((control) => {
         if (control.isOpen()) control.position();
       });
       if (isTopicsPanelOpen()) positionFloatingPanel(topicsTrigger, topicsPanel, true);
